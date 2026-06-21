@@ -1,0 +1,139 @@
+﻿<ion-app>
+  <ion-header class="app-header">
+    <ion-toolbar>
+      <ion-title>Vacina Kids</ion-title>
+      <ion-chip slot="end" class="family-chip">
+        <ion-icon name="people-outline"></ion-icon>
+        Familia Silva
+      </ion-chip>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <main class="shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Carteira digital infantil</p>
+          <h1>Acompanhe a vacinação das crianças sem confundir históricos.</h1>
+          <p>Veja doses aplicadas, pendências, atrasos e campanhas ativas em uma única tela.</p>
+        </div>
+
+        <div class="hero-summary">
+          <strong>{{ selectedChild().name }}</strong>
+          <span>{{ selectedChild().ageLabel }} - {{ selectedChild().guardian }}</span>
+          <ion-progress-bar [value]="selectedChild().completionRate"></ion-progress-bar>
+          <small>{{ selectedChild().completedCount }} de {{ selectedChild().vaccines.length }} vacinas aplicadas</small>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <aside class="children-panel" aria-label="Criancas acompanhadas">
+          <h2>Crianças</h2>
+
+          <button
+            type="button"
+            class="child-card"
+            *ngFor="let child of children"
+            [class.active]="child.id === selectedChildId"
+            (click)="selectChild(child.id)"
+          >
+            <span class="avatar">{{ child.initials }}</span>
+            <span>
+              <strong>{{ child.name }}</strong>
+              <small>{{ child.ageLabel }}</small>
+            </span>
+            <ion-badge [color]="child.overdueCount > 0 ? 'danger' : 'success'">
+              {{ child.overdueCount > 0 ? child.overdueCount + ' atraso' : 'ok' }}
+            </ion-badge>
+          </button>
+        </aside>
+
+        <section class="dashboard">
+          <div class="status-grid">
+            <article class="metric done">
+              <ion-icon name="checkmark-circle-outline"></ion-icon>
+              <span>Aplicadas</span>
+              <strong>{{ selectedChild().completedCount }}</strong>
+            </article>
+
+            <article class="metric attention">
+              <ion-icon name="alert-circle-outline"></ion-icon>
+              <span>Atrasadas</span>
+              <strong>{{ selectedChild().overdueCount }}</strong>
+            </article>
+
+            <article class="metric next">
+              <ion-icon name="calendar-outline"></ion-icon>
+              <span>Proximas</span>
+              <strong>{{ selectedChild().upcomingCount }}</strong>
+            </article>
+          </div>
+
+          <div class="content-grid">
+            <section class="panel">
+              <div class="panel-title">
+                <div>
+                  <p class="eyebrow">Situação vacinal</p>
+                  <h2>{{ selectedChild().name }}</h2>
+                </div>
+                <ion-segment [value]="filter" (ionChange)="changeFilter($event.detail.value)">
+                  <ion-segment-button value="all">
+                    <ion-label>Todas</ion-label>
+                  </ion-segment-button>
+                  <ion-segment-button value="pending">
+                    <ion-label>Atenção</ion-label>
+                  </ion-segment-button>
+                </ion-segment>
+              </div>
+
+              <div class="vaccine-list">
+                <article
+                  class="vaccine-item"
+                  *ngFor="let vaccine of visibleVaccines()"
+                  [class.overdue]="vaccine.status === 'overdue'"
+                >
+                  <div class="status-icon" [class]="vaccine.status">
+                    <ion-icon [name]="statusIcon(vaccine.status)"></ion-icon>
+                  </div>
+
+                  <div>
+                    <h3>{{ vaccine.name }}</h3>
+                    <p>{{ vaccine.description }}</p>
+                    <small>
+                      Prevista: {{ vaccine.dueDate | date: 'dd/MM/yyyy' }}
+                      <ng-container *ngIf="vaccine.appliedDate">
+                        - Aplicada: {{ vaccine.appliedDate | date: 'dd/MM/yyyy' }}
+                      </ng-container>
+                    </small>
+                  </div>
+
+                  <ion-badge [color]="statusColor(vaccine.status)">
+                    {{ statusLabel(vaccine.status) }}
+                  </ion-badge>
+                </article>
+              </div>
+            </section>
+
+            <section class="panel campaigns">
+              <div class="panel-title compact">
+                <div>
+                  <p class="eyebrow">Campanhas</p>
+                  <h2>Ativas agora</h2>
+                </div>
+              </div>
+
+              <article class="campaign" *ngFor="let campaign of campaigns">
+                <ion-icon name="megaphone-outline"></ion-icon>
+                <div>
+                  <h3>{{ campaign.title }}</h3>
+                  <p>{{ campaign.audience }}</p>
+                  <small>{{ campaign.period }}</small>
+                </div>
+              </article>
+            </section>
+          </div>
+        </section>
+      </section>
+    </main>
+  </ion-content>
+</ion-app>

@@ -1,0 +1,365 @@
+﻿:host {
+  --ion-color-primary: #abc270;
+  --ion-color-primary-contrast: #473c33;
+  --ion-color-success: #abc270;
+  --ion-color-warning: #fec868;
+  --ion-color-danger: #fda769;
+  color: #473c33;
+}
+
+.app-header ion-toolbar {
+  --background: #473c33;
+  --color: #fff8e8;
+  --min-height: 68px;
+}
+
+.family-chip {
+  margin-right: 16px;
+  --background: #fec868;
+  --color: #473c33;
+  font-weight: 700;
+}
+
+ion-content {
+  --background: #fff8e8;
+}
+
+.shell {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 24px 0 40px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 24px;
+  align-items: stretch;
+  margin-bottom: 24px;
+  padding: 28px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(171, 194, 112, 0.88), rgba(254, 200, 104, 0.78)), #abc270;
+  box-shadow: 0 16px 35px rgba(71, 60, 51, 0.14);
+}
+
+.hero h1 {
+  max-width: 760px;
+  margin: 6px 0 12px;
+  font-size: clamp(2rem, 5vw, 4.4rem);
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.hero p {
+  max-width: 650px;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.eyebrow {
+  margin: 0;
+  color: #765d3d;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.hero-summary {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 180px;
+  padding: 22px;
+  border: 2px solid rgba(71, 60, 51, 0.18);
+  border-radius: 8px;
+  background: rgba(255, 248, 232, 0.78);
+}
+
+.hero-summary strong {
+  font-size: 1.45rem;
+}
+
+.hero-summary span {
+  margin: 6px 0 18px;
+}
+
+.hero-summary small {
+  margin-top: 10px;
+  font-weight: 700;
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 20px;
+}
+
+.children-panel,
+.panel,
+.metric {
+  border: 1px solid rgba(71, 60, 51, 0.16);
+  border-radius: 8px;
+  background: #fffdf7;
+  box-shadow: 0 8px 22px rgba(71, 60, 51, 0.08);
+}
+
+.children-panel {
+  align-self: start;
+  padding: 18px;
+}
+
+.children-panel h2,
+.panel h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.child-card {
+  display: grid;
+  grid-template-columns: 44px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  width: 100%;
+  min-height: 72px;
+  margin-top: 12px;
+  padding: 12px;
+  border: 1px solid rgba(71, 60, 51, 0.15);
+  border-radius: 8px;
+  background: #fff8e8;
+  color: #473c33;
+  text-align: left;
+  cursor: pointer;
+}
+
+.child-card.active {
+  border-color: #abc270;
+  background: #f3f7e8;
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #fda769;
+  color: #473c33;
+  font-weight: 900;
+}
+
+.child-card strong,
+.child-card small {
+  display: block;
+}
+
+.child-card small {
+  margin-top: 4px;
+}
+
+.dashboard {
+  min-width: 0;
+}
+
+.status-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.metric {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  min-height: 104px;
+  padding: 18px;
+}
+
+.metric ion-icon {
+  grid-row: span 2;
+  align-self: center;
+  font-size: 2rem;
+}
+
+.metric span {
+  font-weight: 700;
+}
+
+.metric strong {
+  font-size: 2rem;
+}
+
+.metric.done ion-icon {
+  color: #7d9850;
+}
+
+.metric.attention ion-icon {
+  color: #c7653f;
+}
+
+.metric.next ion-icon {
+  color: #b7821f;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 20px;
+}
+
+.panel {
+  padding: 20px;
+}
+
+.panel-title {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+ion-segment {
+  max-width: 260px;
+  --background: #fff8e8;
+}
+
+.vaccine-list {
+  display: grid;
+  gap: 12px;
+}
+
+.vaccine-item {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: center;
+  min-height: 92px;
+  padding: 14px;
+  border: 1px solid rgba(71, 60, 51, 0.12);
+  border-radius: 8px;
+  background: #fff8e8;
+}
+
+.vaccine-item.overdue {
+  border-color: rgba(253, 167, 105, 0.78);
+  background: #fff1e9;
+}
+
+.vaccine-item h3,
+.campaign h3 {
+  margin: 0 0 4px;
+  font-size: 1rem;
+}
+
+.vaccine-item p,
+.campaign p {
+  margin: 0 0 6px;
+}
+
+.vaccine-item small,
+.campaign small {
+  color: #765d3d;
+  font-weight: 700;
+}
+
+.status-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+}
+
+.status-icon.done {
+  background: #eef5dd;
+  color: #6f8b3f;
+}
+
+.status-icon.overdue {
+  background: #ffe5d4;
+  color: #bf623e;
+}
+
+.status-icon.upcoming {
+  background: #fff1bf;
+  color: #946c16;
+}
+
+.campaigns {
+  align-self: start;
+}
+
+.campaign {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 12px;
+  padding: 14px 0;
+  border-top: 1px solid rgba(71, 60, 51, 0.12);
+}
+
+.campaign:first-of-type {
+  border-top: 0;
+}
+
+.campaign ion-icon {
+  margin-top: 3px;
+  color: #fda769;
+  font-size: 1.8rem;
+}
+
+@media (max-width: 900px) {
+  .hero,
+  .workspace,
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .children-panel {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .children-panel h2 {
+    grid-column: 1 / -1;
+  }
+
+  .child-card {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 620px) {
+  .shell {
+    width: min(100% - 20px, 1180px);
+    padding-top: 12px;
+  }
+
+  .hero {
+    padding: 20px;
+  }
+
+  .family-chip {
+    display: none;
+  }
+
+  .children-panel,
+  .status-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .panel-title,
+  .vaccine-item {
+    align-items: stretch;
+    grid-template-columns: 1fr;
+  }
+
+  .vaccine-item {
+    min-height: 0;
+  }
+
+  ion-segment {
+    max-width: none;
+  }
+}
